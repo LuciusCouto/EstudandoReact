@@ -1,8 +1,8 @@
 function Home() {
     return (
-        <h1>
-            Olá, Mundo!
-        </h1>
+        <main>
+            <h1>Olá Mundo!</h1>
+        </main>
     )
 }
 
