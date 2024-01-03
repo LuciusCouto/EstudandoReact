@@ -1,12 +1,12 @@
 import Head from 'next/head'
 
-export default function Home() {
+export default function Cursos() {
     return (
         <div>
             <Head>
-                <title>Início | Next.js</title>
+                <title>Cursos | Next.js</title>
             </Head>
-            <h1>Início</h1>
+            <h1>Cursos</h1>
         </div>
     )
 }
