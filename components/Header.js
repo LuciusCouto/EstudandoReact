@@ -11,11 +11,17 @@ export default function Header() {
     const toggleSubMenu = (menuId) => {
       setActiveSubMenu(activeSubMenu === menuId ? '' : menuId);
     };
+
+    const [menuAtivo, setMenuAtivo] = useState(false);
+
+    const toggleMenu = () => {
+        setMenuAtivo(!menuAtivo);
+    };
   
     return (
         <header className={styles.menuHeader}>
             <Image src={logoCoutoBrasaoTexto} alt='Logo Couto Brasão com Texto' className={styles.menuImage}/>
-            <nav className={styles.menuNav}>
+            <nav className={`${styles.menuNav} ${menuAtivo ? styles.active : ''}`}>
                 <ul className={styles.menuLinkList}>
                     <li><Link href="/">Início</Link></li>
                     <li><Link href="/oProfessor">O Professor</Link></li>
@@ -37,10 +43,10 @@ export default function Header() {
                     <li>Área do Aluno</li>
                 </ul>
             </nav>
-            <div>
-                <span></span>
-                <span></span>
-                <span></span>
+            <div className={styles.menuHamburguer} onClick={toggleMenu}>
+                <span className={styles.menuHambLine}></span>
+                <span className={styles.menuHambLine}></span>
+                <span className={styles.menuHambLine}></span>
             </div>
         </header>
     )

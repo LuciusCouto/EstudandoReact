@@ -1,65 +1,30 @@
 @charset "UTF-8";
 
-@keyframes rotation {
-    0% {
-        transform: rotate(32deg)
-    }
-
-    10% {
-        transform: rotate(64deg)
-    }
-
-    20% {
-        transform: rotate(96deg)
-    }
-
-    30% {
-        transform: rotate(128deg)
-    }
-
-    40% {
-        transform: rotate(160deg)
-    }
-
-    50% {
-        transform: rotate(192deg)
-    }
-
-    60% {
-        transform: rotate(224deg)
-    }
-
-    70% {
-        transform: rotate(256deg)
-    }
-
-    80% {
-        transform: rotate(288deg)
-    }
-
-    90% {
-        transform: rotate(310deg)
-    }
-
-    100% {
-        transform: rotate(360deg);
-    }
-}
-
+/* Estilo do cabeçalho */
 .menuHeader {
     display: flex;
     background-color: #2d2d2dec;
     padding: 15px;
     width: 100%;
-    height: auto;
+    height: 90px;
     position: fixed;
+    align-items: center;
 }
 
+/* Estilo da imagem do menu */
 .menuImage {
     width: 212px;
     height: fit-content;
 }
 
+@media screen and (max-width: 340px) {
+    .menuImage {
+        width: 160px;
+        height: fit-content;
+    }
+}
+
+/* Estilo do menu de navegação */
 .menuNav {
     display: flex;
     flex-direction: column;
@@ -70,8 +35,13 @@
     left: 0;
     width: 100%;
     height: fit-content;
-    max-height: calc(100svh - 90px);
+    max-height: 0;
     overflow-y: auto;
+    transition: max-height 0.2s ease-in-out;
+}
+
+.menuNav.active {
+    max-height: calc(100svh - 90px);
 }
 
 .menuLinkList {
@@ -99,12 +69,11 @@
 }
 
 .menuLinkList > li:nth-child(odd) {
-    background-color: #414141; /* Cor para os ímpares */
+    background-color: #414141;
 }
 
-/* Estilizando os elementos pares */
 .menuLinkList > li:nth-child(even) {
-    background-color: #2d2d2d; /* Cor para os pares */
+    background-color: #2d2d2d;
 }
 
 .menuDashboardList {
@@ -123,6 +92,7 @@
     font-size: 15px;
 }
 
+/* Estilo dos submenus */
 .menuLinkList > .menuSubList {
     width: 100%;
     height: fit-content;
@@ -146,9 +116,8 @@
     transition: max-height 0.3s ease-in-out;
 }
 
-/* Estilo do submenu quando estiver visível */
 .menuSubList.active .menuSub {
-    max-height: 500px; /* ou outro valor adequado */
+    max-height: 500px;
     transition: max-height 0.5s ease-in-out;
 }
 
@@ -162,10 +131,9 @@
 }
 
 .menuSub > li:nth-child(odd) {
-    background-color: #9A1914; /* Cor para os ímpares */
+    background-color: #9A1914;
 }
 
-/* Estilizando os elementos pares */
 .menuSub > li:nth-child(even) {
     background-color: #ffff;
 }
@@ -176,10 +144,45 @@
 
 .menuSubSeta {
     display: block;
-    transform: rotate(0turn);
+    transform: rotate(0deg);
     transition: transform 0.5s ease-in-out;
 }
 
 .menuSubList.active .menuSubSeta {
-    transform: rotate(0.5turn);
+    transform: rotate(180deg);
+}
+
+/* Estilo do menu hamburguer mobile */
+.menuHamburguer {
+    width: 40px;
+    height: 40px;
+    background-color: #9A1914;
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.719);
+    border-radius: 25%;
+    margin-right: 0;
+    margin-left: auto;
+    cursor: pointer;
+    padding: 4px;
+    -webkit-tap-highlight-color: #ffffff00;
+}
+
+.menuHambLine {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background-color: white;
+    margin: 6px;
+    transition: 0.4s;
+}
+
+.menuNav.active + .menuHamburguer > .menuHambLine:nth-child(1) {
+    transform: rotate(-45deg) translate(-6px, 7px);
+}
+
+.menuNav.active + .menuHamburguer > .menuHambLine:nth-child(2) {
+    opacity: 0;
+}
+
+.menuNav.active + .menuHamburguer > .menuHambLine:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -5px);
 }
